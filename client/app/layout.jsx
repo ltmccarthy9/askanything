@@ -1,18 +1,15 @@
 import './globals.css'
-import  { Montserrat } from '@next/font/google'
+import  { Karla } from '@next/font/google'
+import Nav from './auth/Nav'
 
-const montserrat = Montserrat({
-  weight: ["400", "700"],
+const karla = Karla({
+  weight: ["200", "400", "700", "800"],
   subsets: ["latin"],
-  variable: "--font-montserrat"
+  variable: "--font-karla"
 })
 
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export default function RootLayout({children}) {
   return (
     <html lang="en">
       {/*
@@ -20,7 +17,8 @@ export default function RootLayout({
         head.tsx. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
       */}
       <head />
-      <body className={`${montserrat.className} tracking-tighter`}>
+      <body className={`${karla.className} mx-4 md:mx-48 xl:mx-96 bg-grey-200`}>
+        <Nav />
         {children}
         </body>
     </html>

@@ -11,7 +11,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        montserrat: ["var(--font-montserrat"],
+        karla: ["var(--font-karla"],
       }
     },
   },
