@@ -1,11 +1,11 @@
 import './globals.css'
-import  { Karla } from '@next/font/google'
+import  { Raleway } from '@next/font/google'
 import Nav from './auth/Nav'
 
-const karla = Karla({
+const raleway = Raleway({
   weight: ["200", "400", "700", "800"],
   subsets: ["latin"],
-  variable: "--font-karla"
+  variable: "--font-raleway"
 })
 
 
@@ -17,7 +17,7 @@ export default function RootLayout({children}) {
         head.tsx. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
       */}
       <head />
-      <body className={`${karla.className} mx-4 md:mx-48 xl:mx-96 bg-grey-200`}>
+      <body className={`${raleway.className} mx-4 md:mx-48 xl:mx-96 bg-gray-100`}>
         <Nav />
         {children}
         </body>
