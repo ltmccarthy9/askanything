@@ -14,7 +14,7 @@ export default async function handler(
 
     //delete question
     try{
-       const questionId = req.body.id
+       const questionId = req.body
        const result = await prisma.question.delete({
         where: {
             id: questionId

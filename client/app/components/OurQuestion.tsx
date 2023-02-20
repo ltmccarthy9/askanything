@@ -12,21 +12,24 @@ export default function OurQuestion({profilePic, name, questionTitle, questionId
     
     //toggle question menu for delete
     const [ menu, setMenu] = useState(false);
-    
+    let toastID: string
+    const queryClient = useQueryClient();
     //delete question
-    const {mutate} = useMutation(async (id: string) => {
-        await axios.delete("/api/questions/deleteQuestion", { data: id}),
+    const { mutate } = useMutation(
+        async (id: string) => await axios.delete("/api/questions/deleteQuestion", { data: id }),
         {
             onError: (error) => {
-                console.log(error)
+                toast.error("Error deleting question", { id: toastID })
             },
             onSuccess: (data) => {
-                console.log(data)
+                toast.success("Question has been deleted.", { id: toastID })
+                queryClient.invalidateQueries(["ourquestions"])
             },
         }
-    })
+    )
 
     const deleteQuestion = () => {
+        toastID = toast.loading("deleting question", { id: toastID})
         mutate(questionId);
     }
     return (

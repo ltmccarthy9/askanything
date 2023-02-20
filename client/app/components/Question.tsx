@@ -4,6 +4,7 @@ import Link from "next/link"
 import { EditProps } from "../types/QuestionProps"
 
 export default function Question({profilePic, name, questionTitle, questionId, comments}: EditProps){
+    
     return (
         <div className="bg-white my-3 p-4 rounded-lg">
             <div className="flex items-center gap-2">
