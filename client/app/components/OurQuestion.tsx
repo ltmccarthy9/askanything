@@ -14,7 +14,7 @@ import Link from "next/link"
 //     }[]
 //   }
 
-export default function Question({profilePic, name, questionTitle, questionId, comments}){
+export default function OurQuestion({profilePic, name, questionTitle, questionId, comments}){
     return (
         <div className="bg-white my-3 p-4 rounded-lg">
             <div className="flex items-center gap-2">

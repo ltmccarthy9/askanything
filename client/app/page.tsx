@@ -1,4 +1,4 @@
-'use client'
+"use client"
 import axios from "axios"
 import AskQuestion from "./components/AskQuestion"
 import Question from "./components/Question"
@@ -12,12 +12,14 @@ const allQuestions = async () => {
 
 export default function Home() {
   
-  const { data, error, isInitialLoading } = useQuery<QuestionType[]>({
+  const { data, error, isInitialLoading, isLoading } = useQuery<QuestionType[]>({
     queryFn: allQuestions, 
     queryKey: ["questions"],
   })
+  if (isInitialLoading || isLoading) return "Loading..."
   if (error) return error
-  if (isInitialLoading) return "Loading..."
+
+  console.log(data)
 
   return (
     <div>

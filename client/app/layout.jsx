@@ -1,6 +1,6 @@
 import './globals.css'
 import  { Raleway } from '@next/font/google'
-import Nav from './auth/Nav'
+import Nav from './components/Nav'
 import QueryWrapper from './auth/QueryWrapper'
 
 const raleway = Raleway({

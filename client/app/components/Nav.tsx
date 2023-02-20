@@ -1,6 +1,6 @@
 import Link from 'next/link';
-import Login from './Login';
-import Logged from './Logged';
+import Login from '../auth/Login';
+import Logged from '../auth/Logged';
 import { getServerSession } from 'next-auth/next'
 import { authOptions } from '../../pages/api/auth/[...nextauth]'
 
@@ -9,7 +9,7 @@ export default async function Nav(){
     console.log(session)
     return(
         <nav className='flex justify-between items-center py-8'>
-            <Link href={'/'}>
+            <Link href={'/dashboard'}>
                 <h1 className='font-extrabold text-xl tracking-wide'>Ask Anything.</h1>
             </Link>
             <ul className='flex items-center gap-6'>
