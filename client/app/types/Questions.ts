@@ -1,7 +1,7 @@
 export type QuestionType = {
     id: string
     title: string
-    content?: string
+    content?: string | undefined
     createdAt: string
     author: {
         name: string
@@ -12,5 +12,5 @@ export type QuestionType = {
         id: string
         questionId: string
         userId: string
-    }[]
+    }[] | undefined
 }

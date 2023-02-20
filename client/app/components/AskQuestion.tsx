@@ -10,6 +10,7 @@ export default function AskQuestion(){
     const [question, setQuestion] = useState("")
     const [body, setBody] = useState("")
     const [isDisabled, setIsDisabled] = useState(false);
+    const queryClient = useQueryClient();
     let toastID: string
     
     const content = {title: question, body: body}
@@ -29,6 +30,7 @@ export default function AskQuestion(){
             },
             onSuccess: (data) => {
                 toast.success(`Thanks for asking a question!`, { id: toastID});
+                queryClient.invalidateQueries(["questions"])
                 setQuestion('');
                 setBody('');
                 setIsDisabled(false);

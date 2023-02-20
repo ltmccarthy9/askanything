@@ -5,7 +5,7 @@ export type EditProps = {
     questionTitle: string
     comments?: {
       id: string
-      postId: string
+      questionId: string
       userId: string
-    }[]
+    }[] | undefined
   }
