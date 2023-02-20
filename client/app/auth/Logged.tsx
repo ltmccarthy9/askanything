@@ -15,11 +15,11 @@ export default function Logged({image}: User){
                 >
                     Sign out
                 </button>
-            <Link href={"/profile"}>
+            <Link href={"/dashboard"}>
                 <Image 
-                width={44} 
-                height={44} 
-                className="w-14 rounded-full"
+                width={45} 
+                height={45} 
+                className="rounded-full"
                 src={image}
                 alt="profile picture"
                 priority 
