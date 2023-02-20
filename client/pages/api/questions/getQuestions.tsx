@@ -7,11 +7,12 @@ export default async function handler(
   res: NextApiResponse
 ) {
   if(req.method === "GET"){
-   
+    
     try{
        const data = await prisma.question.findMany({
             include: {
                 author: true,
+                comments: true,
             },
             orderBy: {
                 createdAt: "desc",
