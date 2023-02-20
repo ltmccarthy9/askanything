@@ -10,6 +10,7 @@ export default function AskQuestion(){
     const [question, setQuestion] = useState("")
     const [body, setBody] = useState("")
     const [isDisabled, setIsDisabled] = useState(false);
+    let toastID: string
     
     const content = {title: question, body: body}
 
@@ -22,12 +23,12 @@ export default function AskQuestion(){
         {
             onError: (error) => {
                 if(error instanceof AxiosError){
-                    toast.error(error?.response?.data.message)
+                    toast.error(error?.response?.data.message, { id: toastID})
                 }
                 setIsDisabled(false);
             },
             onSuccess: (data) => {
-                toast.success(`Thanks for asking a question!`);
+                toast.success(`Thanks for asking a question!`, { id: toastID});
                 setQuestion('');
                 setBody('');
                 setIsDisabled(false);
@@ -37,9 +38,11 @@ export default function AskQuestion(){
     
     const submitQuestion = async (e: React.FormEvent) => {
         e.preventDefault()
+        toastID = toast.loading("posting question", { id: toastID})
         setIsDisabled(true)
         mutate(content)
     }
+
     return (
         <form onSubmit={submitQuestion} className="bg-white my-8 p-4 rounded-md flex flex-col">
             <div className="flex flex-col my-2">
