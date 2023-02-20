@@ -2,7 +2,8 @@
 
 import { useState } from "react"
 import { useMutation, useQueryClient } from "@tanstack/react-query"
-import axios from 'axios'
+import axios, { AxiosError } from 'axios'
+import toast from 'react-hot-toast'
 
 export default function AskQuestion(){
     //State for input form
@@ -16,10 +17,23 @@ export default function AskQuestion(){
         [key: string]: string
     }
     
-    const {mutate} = useMutation(async (content: StringObject) => {
-        const response = await axios.post('/api/questions/addQuestion', {content})
-        return response.data
-    });
+    const { mutate } = useMutation(
+        async (content: StringObject) => await axios.post("/api/questions/addQuestion", {content}),
+        {
+            onError: (error) => {
+                if(error instanceof AxiosError){
+                    toast.error(error?.response?.data.message)
+                }
+                setIsDisabled(false);
+            },
+            onSuccess: (data) => {
+                toast.success(`Thanks for asking a question!`);
+                setQuestion('');
+                setBody('');
+                setIsDisabled(false);
+            }
+        }
+    )
     
     const submitQuestion = async (e: React.FormEvent) => {
         e.preventDefault()
