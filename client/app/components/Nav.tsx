@@ -8,7 +8,7 @@ export default async function Nav(){
     const session = await getServerSession(authOptions)
     console.log(session)
     return(
-        <nav className='flex justify-between items-center py-8'>
+        <nav className='flex justify-between items-center py-8 max-w-4xl mx-auto'>
             <Link href={'/'}>
                 <h1 className='font-extrabold text-xl tracking-wide'>Ask Anything.</h1>
             </Link>

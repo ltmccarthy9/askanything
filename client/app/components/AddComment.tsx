@@ -33,6 +33,7 @@ export default function AddComment({ id } : QuestionProps){
                 setComment('')
                 setDisabled(false)
                 toast.success("Comment added", { id: toastID })
+                queryClient.invalidateQueries(["expanded-question"])
             }
         }
     )
@@ -44,21 +45,19 @@ export default function AddComment({ id } : QuestionProps){
         mutate({comment, questionId: id})
     }
     return (
-        <form onSubmit={submitComment} className="my-8">
+        <form onSubmit={submitComment} className="my-8 flex flex-col">
             <h3>Add a comment</h3>
-            <div>
-                <input
+                <textarea
                 onChange={(e) => setComment(e.target.value)}
                 value={comment}
-                type='text'
+                maxLength={2000}
                 name="comment"
-                className="p-4 text-lg rounded-md my-2"
-                />
-            </div>
+                className="p-4 text-sm rounded-md my-2 w-full h-60"
+                ></textarea>
         <button 
         disabled={disabled} 
         type='submit'
-        className="text-sm bg-lime-700 text-white py-3 px-4 rounded-lg hover:bg-lime-600 ml-auto disabled:opacity-25" 
+        className="text-sm bg-lime-700 text-white py-3 px-4 rounded-lg hover:bg-lime-600 mr-0 ml-auto disabled:opacity-25" 
         >Post Comment</button>
         </form>
     )

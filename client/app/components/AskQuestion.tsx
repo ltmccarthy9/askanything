@@ -46,7 +46,7 @@ export default function AskQuestion(){
     }
 
     return (
-        <form onSubmit={submitQuestion} className="bg-white my-8 p-4 rounded-md flex flex-col">
+        <form onSubmit={submitQuestion} className="bg-white my-8 p-4 rounded-md flex flex-col max-w-3xl mx-auto">
             <div className="flex flex-col my-2">
                 <textarea 
                 onChange={(e) => setQuestion(e.target.value)} 

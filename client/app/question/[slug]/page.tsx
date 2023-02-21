@@ -2,6 +2,7 @@
 
 import QuestionWithContent from "@/app/components/QuestionWithContent"
 import AddComment from "@/app/components/AddComment"
+import Comment from "@/app/components/Comment"
 import { QuestionType } from "@/app/types/Questions"
 import { useQuery } from '@tanstack/react-query'
 import axios from "axios"
@@ -35,12 +36,18 @@ export default function QuestionExpanded(url: URL){
             id={data?.id} 
             name={data?.author.name}
             profilePic={data?.author.image}
-            title={data.title}
+            questionTitle={data.title}
             content={data.content}
              />
              <AddComment id={data.id} />
             {data?.comments?.map(com => {
-                return <div>{com.message}</div>
+                return <Comment 
+                key={com.id}
+                profilePic={com.author.image}
+                username={com.author.name}
+                createdAt={com.createdAt}
+                comment={com.message}
+                  />
             })}
         </div>
     )

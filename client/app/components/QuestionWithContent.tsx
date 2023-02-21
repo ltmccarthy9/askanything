@@ -18,8 +18,8 @@ export default function QuestionWithContent({profilePic, name, questionTitle, qu
                 <p className="font-bold text-sm text-gray-700">{name}</p>
             </div>
             <div className="my-2">
-                <p className="break-all">{questionTitle}</p>
-                <p className="break-all">{content}</p>
+                <h2 className="break-all font-bold my-4">{questionTitle}</h2>
+                <p className="break-all text-sm">{content}</p>
             </div>
         </div>
     )
