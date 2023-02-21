@@ -6,7 +6,7 @@ import { EditProps } from "../types/QuestionProps"
 export default function Question({profilePic, name, questionTitle, questionId, comments}: EditProps){
     
     return (
-        <div className="bg-white my-3 p-4 rounded-lg max-w-3xl mx-auto">
+        <div className="bg-white my-3 p-4 rounded-lg max-w-4xl mx-auto">
             <div className="flex items-center gap-2">
                 <Image 
                     width={24} 
@@ -18,7 +18,7 @@ export default function Question({profilePic, name, questionTitle, questionId, c
                 <p className="font-bold text-sm text-gray-700">{name}</p>
             </div>
             <div className="my-2">
-                <p className="break-all">{questionTitle}</p>
+                <p className="break-all font-bold">{questionTitle}</p>
             </div>
             <div className="flex gap-4 cursor-pointer items-center">
                 <Link href={`/question/${questionId}`}>

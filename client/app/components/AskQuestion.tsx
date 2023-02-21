@@ -9,7 +9,7 @@ export default function AskQuestion(){
     //State for input form
     const [question, setQuestion] = useState("")
     const [body, setBody] = useState("")
-    const [isDisabled, setIsDisabled] = useState(false);
+    const [disabled, setDisabled] = useState(false);
     const queryClient = useQueryClient();
     let toastID: string
     
@@ -26,14 +26,14 @@ export default function AskQuestion(){
                 if(error instanceof AxiosError){
                     toast.error(error?.response?.data.message, { id: toastID})
                 }
-                setIsDisabled(false);
+                setDisabled(false);
             },
             onSuccess: (data) => {
                 toast.success(`Thanks for asking a question!`, { id: toastID});
                 queryClient.invalidateQueries(["questions"])
                 setQuestion('');
                 setBody('');
-                setIsDisabled(false);
+                setDisabled(false);
             }
         }
     )
@@ -41,13 +41,13 @@ export default function AskQuestion(){
     const submitQuestion = async (e: React.FormEvent) => {
         e.preventDefault()
         toastID = toast.loading("posting question", { id: toastID})
-        setIsDisabled(true)
+        setDisabled(true)
         mutate(content)
     }
 
     return (
-        <form onSubmit={submitQuestion} className="bg-white my-8 p-4 rounded-md flex flex-col max-w-3xl mx-auto">
-            <div className="flex flex-col my-2">
+        <form onSubmit={submitQuestion} className="bg-white my-4 p-2 rounded-md flex flex-col max-w-4xl mx-auto">
+            <div className="flex flex-col">
                 <textarea 
                 onChange={(e) => setQuestion(e.target.value)} 
                 name="question" 
@@ -58,20 +58,20 @@ export default function AskQuestion(){
                 ></textarea>
                 <p className="text-sm tracking-tight ml-auto">{`${question.length}/150`}</p>
             </div>
-            <div className="flex flex-col my-2">
+            <div className="flex flex-col h-fit">
                 <textarea 
                 onChange={(e) => setBody(e.target.value)} 
                 name="question" 
                 value={body}
                 placeholder="Text (optional)"
                 maxLength={2000}
-                className="py-3 px-4 align-middle text-md tracking-wide rounded-md my-2 overflow-hidden border"
+                className="py-3 px-4 align-middle text-md tracking-wide rounded-md my-2 overflow-hidden border h-40"
                 ></textarea>
                 <p className="text-sm tracking-tight ml-auto">{`${body.length}/2000`}</p>
             </div>
             <div className="w-full flex">
                 <button
-                disabled={isDisabled}
+                disabled={disabled}
                 className="text-sm bg-lime-700 text-white py-3 px-4 rounded-lg hover:bg-lime-600 ml-auto disabled:opacity-25"
                 type="submit"
                 >
