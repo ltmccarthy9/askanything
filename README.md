@@ -9,9 +9,12 @@ Ask Anything is an application where you can sign up, ask questions, and comment
 * Prisma
 * PostgreSQL
 * Railway
+* React Query
+* React Hot Toast 
 
 
-
+## Video demo
+https://www.youtube.com/watch?v=uwHqmfMd598&ab_channel=LiamMcCarthy
 
 
 

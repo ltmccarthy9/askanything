@@ -15,6 +15,13 @@ export default function OurQuestion({profilePic, name, questionTitle, questionId
     const [disabled, setDisabled] = useState(false);
     let toastID: string
     const queryClient = useQueryClient();
+    
+    const oneComment = ' Comment'
+    const pluralComment = ' Comments'
+
+    const isOne = comments?.length === 1
+
+    
     //delete question
     const { mutate } = useMutation(
         async (id: string) => await axios.delete("/api/questions/deleteQuestion", { data: id }),
@@ -76,7 +83,7 @@ export default function OurQuestion({profilePic, name, questionTitle, questionId
             </div>
             <div className="flex gap-4 cursor-pointer items-center">
                 <Link href={`/question/${questionId}`}>
-                    <p className="text-sm font-bold text-gray-700">{comments?.length} comments</p>
+                    <p className="text-sm font-bold text-gray-700">{comments?.length}{isOne ? oneComment : pluralComment}</p>
                 </Link>
             </div>
         </div>
