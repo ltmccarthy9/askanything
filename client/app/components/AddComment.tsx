@@ -45,14 +45,14 @@ export default function AddComment({ id } : QuestionProps){
         mutate({comment, questionId: id})
     }
     return (
-        <form onSubmit={submitComment} className="my-8 flex flex-col max-w-4xl mx-auto">
-            <h3>Add a comment</h3>
+        <form onSubmit={submitComment} className=" flex flex-col max-w-4xl mx-auto rounded-xl">
                 <textarea
                 onChange={(e) => setComment(e.target.value)}
                 value={comment}
                 maxLength={2000}
                 name="comment"
-                className="p-4 bg-gray-200 text-sm rounded-md my-2 w-full h-40 border border-slate-200"
+                placeholder="Add a comment..."
+                className="p-4 bg-gray-200 rounded-md my-2 w-full h-40 border border-slate-200"
                 ></textarea>
         <button 
         disabled={disabled} 

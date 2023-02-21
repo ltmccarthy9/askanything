@@ -22,7 +22,8 @@ export default function Home() {
   const image = data?.image
 
   return (
-    <div>
+    <div className="max-w-4xl mx-auto">
+        <h2 className="text-lg font-bold">Your Questions</h2>
       {data?.questions.map((question) => (
         <OurQuestion
         comments={question.comments}

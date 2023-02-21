@@ -5,8 +5,14 @@ import { EditProps } from "../types/QuestionProps"
 
 export default function Question({profilePic, name, questionTitle, questionId, comments}: EditProps){
     
+    //for conditional rendering of 'comment' vs 'comments'
+    const oneComment = ' Comment'
+    const pluralComment = ' Comments'
+
+    const isOne = comments?.length === 1
+
     return (
-        <div className="bg-white my-3 p-4 rounded-lg max-w-4xl mx-auto">
+        <div className="bg-white my-3 p-4 rounded-xl max-w-4xl mx-auto">
             <div className="flex items-center gap-2">
                 <Image 
                     width={24} 
@@ -22,7 +28,7 @@ export default function Question({profilePic, name, questionTitle, questionId, c
             </div>
             <div className="flex gap-4 cursor-pointer items-center">
                 <Link href={`/question/${questionId}`}>
-                    <p className="text-sm font-bold text-gray-600 hover:text-black">{comments?.length} comments</p>
+                    <p className="text-sm font-bold text-gray-600 hover:text-black">{comments?.length}{isOne ? oneComment : pluralComment}</p>
                 </Link>
             </div>
         </div>

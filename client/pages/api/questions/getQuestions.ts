@@ -10,6 +10,7 @@ export default async function handler(
 
     try{
        const data = await prisma.question.findMany({
+        take: 200,
             include: {
                 author: true,
                 comments: true,

@@ -11,7 +11,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        karla: ["var(--font-raleway"],
+        mukta: ["var(--font-mukta"],
       }
     },
   },

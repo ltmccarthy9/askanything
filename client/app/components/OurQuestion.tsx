@@ -44,7 +44,7 @@ export default function OurQuestion({profilePic, name, questionTitle, questionId
         }
     }
     return (
-        <div className="bg-white my-3 p-4 rounded-lg max-w-4xl mx-auto">
+        <div className="bg-white my-3 p-4 rounded-xl max-w-4xl mx-auto">
             <div onClick={handleMenu} className={menu ? "fixed w-full h-full top-0 right-0" : "hidden"}></div>
             <div className="flex items-center gap-2">
                 <Image 
@@ -72,7 +72,7 @@ export default function OurQuestion({profilePic, name, questionTitle, questionId
                 
             </div>
             <div className="my-2">
-                <p className="break-all">{questionTitle}</p>
+                <p className="break-all font-bold">{questionTitle}</p>
             </div>
             <div className="flex gap-4 cursor-pointer items-center">
                 <Link href={`/question/${questionId}`}>

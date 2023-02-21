@@ -6,7 +6,7 @@ import { ExpandedProps } from "../types/QuestionProps"
 export default function QuestionWithContent({profilePic, name, questionTitle, questionId, comments, content}: ExpandedProps){
     
     return (
-        <div className="bg-white my-3 p-4 rounded-lg max-w-4xl mx-auto">
+        <div className="bg-white my-3 p-4 rounded-xl max-w-4xl mx-auto">
             <div className="flex items-center gap-2">
                 <Image 
                     width={24} 
@@ -19,7 +19,7 @@ export default function QuestionWithContent({profilePic, name, questionTitle, qu
             </div>
             <div className="my-2">
                 <h2 className="break-all font-bold my-2 text-xl">{questionTitle}</h2>
-                <p className="break-all text-sm p-2">{content}</p>
+                <p className="break-all p-2">{content}</p>
             </div>
         </div>
     )
