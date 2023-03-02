@@ -51,7 +51,7 @@ export default function OurQuestion({profilePic, name, questionTitle, questionId
         }
     }
     return (
-        <div className="bg-white my-3 p-4 rounded-xl max-w-4xl mx-auto">
+        <div className="bg-white my-3 pb-2 pt-1 px-2 rounded-xl max-w-4xl mx-auto">
             <div onClick={handleMenu} className={menu ? "fixed w-full h-full top-0 right-0" : "hidden"}></div>
             <div className="flex items-center gap-2">
                 <Image 

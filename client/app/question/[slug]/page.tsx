@@ -8,6 +8,7 @@ import { useQuery } from '@tanstack/react-query'
 import axios from "axios"
 import { QuestionExpand } from "@/app/types/QuestionExpanded"
 
+// Url type
 type URL = {
     params: {
         slug: string
@@ -15,18 +16,20 @@ type URL = {
     searchParams: string
 }
 
+// get request for question based on id of question
 const getExpanded = async (slug: string) => {
     const response = await axios.get(`/api/questions/${slug}`)
     return response.data
 }
 
+// useQuery to get our question
 export default function QuestionExpanded(url: URL){
     const {data, isLoading} = useQuery({
         queryKey: ["expanded-question"],
         queryFn: () => getExpanded(url.params.slug),
     })
 
-    if(isLoading) return "Loading..."
+if(isLoading) return <p>Loading...</p>
 
     console.log(data)
     
@@ -36,8 +39,9 @@ export default function QuestionExpanded(url: URL){
             id={data?.id} 
             name={data?.author.name}
             profilePic={data?.author.image}
-            questionTitle={data.title}
-            content={data.content}
+            questionTitle={data?.title}
+            content={data?.content}
+            createdAt={data?.createdAt}
              />
              <AddComment id={data.id} />
             {data?.comments?.map(com => {
