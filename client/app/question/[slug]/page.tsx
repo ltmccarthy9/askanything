@@ -3,12 +3,10 @@
 import QuestionWithContent from "@/app/components/QuestionWithContent"
 import AddComment from "@/app/components/AddComment"
 import Comment from "@/app/components/Comment"
-import { QuestionType } from "@/app/types/Questions"
 import { useQuery } from '@tanstack/react-query'
 import axios from "axios"
-import { QuestionExpand } from "@/app/types/QuestionExpanded"
-import { ExpandedProps } from "@/app/types/QuestionProps"
 import { CommentType } from "@/app/types/CommentProps"
+
 // Url type
 type URL = {
     params: {
@@ -26,15 +24,14 @@ const getExpanded = async (slug: string) => {
 
 // useQuery to get our question
 export default function QuestionExpanded(url: URL){
-    const {data, isLoading} = useQuery({
+    const { data, error, isInitialLoading, isLoading } = useQuery({
         queryKey: ["expanded-question"],
         queryFn: () => getExpanded(url.params.slug),
     })
 
-if(isLoading) return <p>Loading...</p>
-
-    console.log(data)
-    
+if (isInitialLoading || isLoading) return <div>Loading...</div>
+if (error) return <><div>{error.toString()}</div></>
+  
     return(
         <div>
             <QuestionWithContent 
