@@ -16,3 +16,17 @@ export type OurQuestionType = {
         }[] | undefined
     }[]
 }
+
+// type Ques = {
+//   id: string
+//   questionId: string
+//   title: string
+//   name: string
+//   profilePic: string
+//   comments?: {
+//     createdAt: string
+//     id: string
+//     questionId: string
+//     userId: string
+// }[] | undefined
+// }
