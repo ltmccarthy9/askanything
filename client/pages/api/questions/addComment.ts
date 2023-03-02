@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { getServerSession } from 'next-auth/next'
 import { authOptions } from '../auth/[...nextauth]'
-import prisma from '../../../app/prisma/client'
+import prisma from '../../../prisma/client'
 
 type Comment = {
   questionId: string
