@@ -2,20 +2,14 @@
 
 import { create } from "domain"
 import Image from "next/image"
+import { CommentProps } from "../types/CommentProps"
 
-export default function Comment({ profilePic, username, createdAt, comment}){
+export default function Comment({ profilePic, username, createdAt, comment }: CommentProps){
     
     const commentDate = new Date(createdAt)
 
-    const dateOptions = {
-        month: 'short',
-        day: 'numeric',
-        year: 'numeric',
-        timeZone: 'UTC'
-    }
-
     return(
-        <div className=" bg-gray-200 rounded-xl p-2 m-2 max-w-4xl mx-auto">
+        <div className=" bg-white rounded-xl p-2 m-2 max-w-4xl mx-auto">
             <div className="flex items-center gap-2">
                 <Image
                 width={24}
@@ -25,7 +19,7 @@ export default function Comment({ profilePic, username, createdAt, comment}){
                 className="rounded-full"
                 />
                 <h3 className="text-sm">{username}</h3>
-                <h2 className="text-sm ml-auto">{commentDate.toLocaleDateString('en-US', dateOptions)}</h2>
+                <h2 className="text-sm ml-auto">{commentDate.toLocaleDateString()}</h2>
             </div>
             <p className="p-2">{comment}</p>
         </div>

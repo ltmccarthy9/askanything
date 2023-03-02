@@ -11,11 +11,12 @@ export type EditProps = {
   }
 
   export type ExpandedProps = {
-    questionId: string
+    id: string
     profilePic: string
     name: string
     questionTitle: string
     content: string
+    createdAt: string
     comments?: {
       id: string
       questionId: string

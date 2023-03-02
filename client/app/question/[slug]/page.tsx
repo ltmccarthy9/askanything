@@ -7,7 +7,8 @@ import { QuestionType } from "@/app/types/Questions"
 import { useQuery } from '@tanstack/react-query'
 import axios from "axios"
 import { QuestionExpand } from "@/app/types/QuestionExpanded"
-
+import { ExpandedProps } from "@/app/types/QuestionProps"
+import { CommentType } from "@/app/types/CommentProps"
 // Url type
 type URL = {
     params: {
@@ -15,6 +16,7 @@ type URL = {
     }
     searchParams: string
 }
+
 
 // get request for question based on id of question
 const getExpanded = async (slug: string) => {
@@ -44,14 +46,16 @@ if(isLoading) return <p>Loading...</p>
             createdAt={data?.createdAt}
              />
              <AddComment id={data.id} />
-            {data?.comments?.map(com => {
-                return <Comment 
+            {data?.comments?.map((com: CommentType)=> {
+                return (<Comment 
                 key={com.id}
+                id={com.id}
                 profilePic={com.author.image}
                 username={com.author.name}
                 createdAt={com.createdAt}
                 comment={com.message}
                   />
+                )
             })}
         </div>
     )

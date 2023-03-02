@@ -3,16 +3,9 @@ import Image from "next/image"
 import Link from "next/link"
 import { ExpandedProps } from "../types/QuestionProps"
 
-export default function QuestionWithContent({profilePic, name, questionTitle, questionId, comments, content, createdAt}: ExpandedProps){
+export default function QuestionWithContent({profilePic, name, questionTitle, id, content, createdAt}: ExpandedProps){
     
     const commentDate = new Date(createdAt)
-
-    const dateOptions = {
-        month: 'short',
-        day: 'numeric',
-        year: 'numeric',
-        timeZone: 'UTC'
-    }
 
     return (
         <div className="bg-white my-3 p-4 rounded-xl max-w-4xl mx-auto">
@@ -26,7 +19,7 @@ export default function QuestionWithContent({profilePic, name, questionTitle, qu
                 />
                 <div className="flex justify-between w-full">
                     <p className="font-bold text-sm text-gray-700">{name}</p>
-                    <p className="font-bold text-sm text-gray-700">{commentDate.toLocaleDateString('en-US', dateOptions)}</p>
+                    <p className="font-bold text-sm text-gray-700">{commentDate.toLocaleDateString()}</p>
                 </div>
             </div>
             <div className="my-2">

@@ -1,7 +1,7 @@
 export type OurQuestionType = {
     id: string
     name: string
-    email?: string | undefined
+    email: string
     image: string
     questions: {
         id: string

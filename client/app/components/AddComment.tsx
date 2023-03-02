@@ -5,11 +5,11 @@ import axios, { AxiosError } from "axios"
 import toast from 'react-hot-toast'
 
 type QuestionProps = {
-    id?: string
+    id: string
 }
 
 type Comment = {
-    questionId?: string
+    questionId: string
     comment: string
 }
 
@@ -52,7 +52,7 @@ export default function AddComment({ id } : QuestionProps){
                 maxLength={2000}
                 name="comment"
                 placeholder="Add a comment..."
-                className="p-4 bg-gray-200 rounded-md my-2 w-full h-40 border border-slate-200"
+                className="text-input p-4 bg-gray-200 rounded-md my-2 w-full h-40 border border-slate-200"
                 ></textarea>
         <button 
         disabled={disabled} 
