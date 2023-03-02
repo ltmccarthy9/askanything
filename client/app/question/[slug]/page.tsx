@@ -46,7 +46,7 @@ if(isLoading) return <p>Loading...</p>
             createdAt={data?.createdAt}
              />
              <AddComment id={data.id} />
-            {data?.comments?.map((com: CommentType)=> {
+            {data?.comments?.map((com: CommentType) => {
                 return (<Comment 
                 key={com.id}
                 id={com.id}

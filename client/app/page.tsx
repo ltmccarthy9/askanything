@@ -16,8 +16,8 @@ export default function Home() {
     queryFn: allQuestions, 
     queryKey: ["questions"],
   })
-  if (isInitialLoading || isLoading) return "Loading..."
-  if (error) return error
+  if (isInitialLoading || isLoading) return <div>Loading...</div>
+  if (error) return <><div>{error.toString()}</div></>
 
   console.log(data)
 
