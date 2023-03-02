@@ -7,11 +7,10 @@ export default async function handler(
   res: NextApiResponse
 ) {
   if(req.method === "GET"){
-    try{
-        
+    try{        
         const data = await prisma.question.findUnique({
             where: {
-                id: req.query.expanded
+                id: req.query.expanded as string
             },
             include: {
                 author: true,

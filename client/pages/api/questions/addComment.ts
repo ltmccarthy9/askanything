@@ -3,6 +3,11 @@ import { getServerSession } from 'next-auth/next'
 import { authOptions } from '../auth/[...nextauth]'
 import prisma from '../prisma/client'
 
+type Comment = {
+  questionId: string
+  comment: string
+}
+
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
@@ -12,11 +17,11 @@ export default async function handler(
     if(!session) return res.status(401).json({message: "Please sign in"})
 
     const prismaUser = await prisma.user.findUnique({
-        where: {email: session?.user?.email },
+        where: {email: session?.user?.email as string | undefined },
     })
     //add comment
     try{
-       const {comment, questionId } = req.body.data
+       const {comment, questionId }:Comment = req.body.data
 
        if(!comment.length){
         return res.status(401).json({ err: "comment must have content"})
@@ -25,7 +30,7 @@ export default async function handler(
        const result = await prisma.comment.create({
         data: {
             message: comment,
-            userId: prismaUser?.id,
+            userId: prismaUser?.id as string,
             questionId: questionId,
         }
        })

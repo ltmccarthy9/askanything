@@ -7,14 +7,6 @@ import { useQuery } from '@tanstack/react-query'
 import axios from "axios"
 import { CommentType } from "@/app/types/CommentProps"
 
-// Url type
-type URL = {
-    params: {
-        slug: string
-    }
-    searchParams: string
-}
-
 
 // get request for question based on id of question
 const getExpanded = async (slug: string) => {
@@ -23,11 +15,13 @@ const getExpanded = async (slug: string) => {
 }
 
 // useQuery to get our question
-export default function QuestionExpanded(url: URL){
+export default function QuestionExpanded({ params }: { params: { slug: string}}){
+    const { slug } = params;
     const { data, error, isInitialLoading, isLoading } = useQuery({
         queryKey: ["expanded-question"],
-        queryFn: () => getExpanded(url.params.slug),
+        queryFn: () => getExpanded(slug),
     })
+
 
 if (isInitialLoading || isLoading) return <div>Loading...</div>
 if (error) return <><div>{error.toString()}</div></>

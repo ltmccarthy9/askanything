@@ -42,7 +42,7 @@ export default function AddComment({ id } : QuestionProps){
         e.preventDefault()
         setDisabled(true)
         toastID = toast.loading("Posting your comment", {id: toastID})
-        mutate({comment, questionId: id})
+        mutate({comment: comment, questionId: id})
     }
     return (
         <form onSubmit={submitComment} className=" flex flex-col max-w-4xl mx-auto rounded-xl">

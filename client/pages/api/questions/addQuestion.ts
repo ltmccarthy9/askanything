@@ -17,7 +17,7 @@ export default async function handler(
 
     //Get User
     const prismaUser = await prisma.user.findUnique({
-        where: {email: session?.user?.email },
+        where: {email: session?.user?.email as string | undefined},
     })
 
     if(!title.length) {
@@ -26,10 +26,10 @@ export default async function handler(
 
     try{
         const result = await prisma.question.create({
-            data:{
+            data: {
                 title: title,
                 content: body,
-                userId: prismaUser.id,
+                userId: prismaUser?.id as string,
             },
         })
         res.status(200).json(result)
