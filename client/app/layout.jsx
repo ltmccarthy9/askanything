@@ -3,6 +3,7 @@ import  { Mukta } from '@next/font/google'
 import Nav from './components/Nav'
 import QueryWrapper from './auth/QueryWrapper'
 
+
 const mukta = Mukta({
   weight: ["200", "400", "600", "700", "800"],
   subsets: ["latin"],

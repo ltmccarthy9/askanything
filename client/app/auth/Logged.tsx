@@ -10,7 +10,7 @@ type User = {
 
 export default function Logged({image}: User){
     return(
-        <li className="flex gap-8 items-center">
+        <li className="flex gap-2 items-center">
               <Link href={"/dashboard"}>
                 <div className="flex justify-between p-2 
                 rounded-lg h-12 hover:bg-gray-200 ease-in duration-100">
