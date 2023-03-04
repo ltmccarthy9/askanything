@@ -15,8 +15,9 @@ export default async function Nav(){
                 </Link>
                 <ul className='flex items-center gap-6'>
                     <Link href={'/'}>
-                        <h1 className='font-bold text-slate-800
-                        hover:text-black tracking-wide mr-2'>questions</h1>
+                        <div className='flex p-2 rounded-lg hover:bg-gray-200 h-12'>
+                            <h2 className='my-auto'>Questions</h2>
+                        </div>
                     </Link>
                     {!session?.user && <Login/>}
                     {session?.user && <Logged image={session.user?.image || ""} />}

@@ -63,7 +63,7 @@ export default function OurQuestion({profilePic, name, questionTitle, questionId
                 />
                 <p className="font-bold text-sm text-gray-700">{name}</p>
             <div className="ml-auto relative">
-                <button type="button" onClick={() => setMenu(!menu)} className="h-fit w-fit hover:bg-slate-200 rounded-full p-1" >
+                <button type="button" onClick={() => setMenu(!menu)} className="h-fit w-fit hover:bg-gray-200 rounded-full p-1" >
                     <HiEllipsisVertical size={25} />
                 </button>
                 <button 
@@ -83,7 +83,7 @@ export default function OurQuestion({profilePic, name, questionTitle, questionId
             </div>
             <div className="flex gap-4 cursor-pointer items-center">
                 <Link href={`/question/${questionId}`}>
-                    <p className="text-sm font-bold text-gray-700">{comments?.length}{isOne ? oneComment : pluralComment}</p>
+                    <p className="text-sm font-bold text-gray-700 hover:text-black">{comments?.length}{isOne ? oneComment : pluralComment}</p>
                 </Link>
             </div>
         </div>

@@ -12,21 +12,25 @@ export default function Logged({image}: User){
     return(
         <li className="flex gap-8 items-center">
               <Link href={"/dashboard"}>
-                <Image 
-                width={45} 
-                height={45} 
-                className="rounded-full border-2 border-slate-100 hover:border-slate-700
-                hover:border-2"
-                src={image}
-                alt="profile picture"
-                priority 
-                />
+                <div className="flex justify-between p-2 
+                rounded-lg h-12 hover:bg-gray-200 ease-in duration-100">
+                    <p className="my-auto mx-1">Profile</p>
+                    <Image 
+                    width={30} 
+                    height={30} 
+                    className="rounded-full"
+                    src={image}
+                    alt="profile picture"
+                    priority 
+                    />
+                </div>
+                
             </Link>
                 <button 
                 onClick={() => signOut()} 
-                className="text-sm font-bold text-slate-700 py-2 px-5 rounded-md
-                 disabled:opacity-25 hover:bg-slate-600 hover:text-white transition-all
-                 border-2 border-slate-700 ease-in duration-100"
+                className="h-12 py-2 px-5 rounded-lg
+                 disabled:opacity-25 hover:bg-gray-200 transition-all
+                 ease-in duration-100"
                 >
                     Sign out
                 </button>
