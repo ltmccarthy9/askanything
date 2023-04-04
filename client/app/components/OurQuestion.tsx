@@ -53,7 +53,7 @@ export default function OurQuestion({profilePic, name, questionTitle, questionId
     return (
         <div className="bg-white my-3 pb-2 pt-1 px-2 rounded-xl max-w-4xl mx-auto">
             <div onClick={handleMenu} className={menu ? "fixed w-full h-full top-0 right-0" : "hidden"}></div>
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2 pt-1 pl-1">
                 <Image 
                     width={24} 
                     height={24} 
@@ -63,8 +63,8 @@ export default function OurQuestion({profilePic, name, questionTitle, questionId
                 />
                 <p className="font-bold text-sm text-gray-700">{name}</p>
             <div className="ml-auto relative">
-                <button type="button" onClick={() => setMenu(!menu)} className="h-fit w-fit hover:bg-gray-200 rounded-full p-1" >
-                    <HiEllipsisVertical size={25} />
+                <button type="button" onClick={() => setMenu(!menu)} className=" hover:bg-gray-200 rounded-full absolute p-1 top-0 right-0" >
+                    <HiEllipsisVertical size={22} />
                 </button>
                 <button 
                 type="button"
@@ -78,10 +78,10 @@ export default function OurQuestion({profilePic, name, questionTitle, questionId
             </div>
                 
             </div>
-            <div className="my-2">
+            <div className="my-2 px-2">
                 <p className="break-all font-bold">{questionTitle}</p>
             </div>
-            <div className="flex gap-4 cursor-pointer items-center">
+            <div className="flex gap-4 cursor-pointer items-center px-2">
                 <Link href={`/question/${questionId}`}>
                     <p className="text-sm font-bold text-gray-700 hover:text-black">{comments?.length}{isOne ? oneComment : pluralComment}</p>
                 </Link>
